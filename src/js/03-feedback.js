@@ -7,13 +7,6 @@ const form = document.querySelector('.feedback-form');
 const emailInput = form.querySelector('input[name="email"]');
 const messageInput = form.querySelector('textarea[name="message"]');
 
-
-// Налаштовуємо слухачів подій
-form.addEventListener('input', throttle(saveFormState, 500));
-window.addEventListener('load', restoreFormState);
-form.addEventListener('submit', handleSubmit);
-
-
 // Функція, яка зберігає значення полів у локальне сховище
 const saveFormState = () => {
   const state = {
@@ -44,3 +37,8 @@ const handleSubmit = event => {
   messageInput.value = '';
   console.log(state);
 };
+
+// Налаштовуємо слухачів подій
+form.addEventListener('input', throttle(saveFormState, 500));
+window.addEventListener('load', restoreFormState);
+form.addEventListener('submit', handleSubmit);
